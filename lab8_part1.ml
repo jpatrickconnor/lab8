@@ -202,7 +202,7 @@ module MakeSafeInterval (Endpoint : ORDERED_TYPE) =
       | Interval of endpoint * endpoint
       | Empty
 
-      let create (low : endpoint) (high : endpoint) : interval -
+      let create (low : endpoint) (high : endpoint) : interval =
         if Endpoint.compare low high > 0 then Empty
         else Interval (low, high)
 
@@ -226,7 +226,7 @@ module MakeSafeInterval (Endpoint : ORDERED_TYPE) =
         | Interval (low1, high1), Interval (low2, high2) ->
             let (_, low), (high, _) = ordered low1 low2, ordered high1 high2 in
             create low high
-  end ;;
+    end ;;
 
 (* We have successfully made our returned module abstract, but believe
 it or not, it is now too abstract. In fact, we have not exposed the
